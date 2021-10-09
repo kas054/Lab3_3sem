@@ -82,30 +82,37 @@ namespace Menu {
 
     int D_Add_Sub(Vector &vector)
     {
-        Vector vector_2;
+        Vector vector_2, *answer;
         double *numbers = nullptr;
         int size = 0;
         std::cout << "Max size of vector: " << vector.getMaxSize() << std::endl;
         std::cout << "Input count of numbers: " << std::endl;
         do
         {
+            std::cin.clear();
             getInt(size);
         } while (size > vector.getMaxSize());
 
         std::cout << "Input numbers: " << std::endl;
         numbers = new double[size];
+
         for (int i = 0; i < size; i ++)
         {
             getInt<double>(numbers[i]);
         }
         vector_2.inputParameters(size, numbers);
         delete [] numbers;
+
         std::cout << "vector1 + vector2 =  " << std::endl;
-        vector.addition(vector_2);
-        D_Print(vector);
+        answer =  vector.addition(vector_2);
+        D_Print(*answer);
+        delete answer;
+
         std::cout << "vector1 - vector2 =  " << std::endl;
-        for (int i = 0; i < 2; i ++) vector.subtraction(vector_2);
-        D_Print(vector);
+        answer =  vector.subtraction(vector_2);
+        D_Print(*answer);
+        delete answer;
+
         return 1;
     }
 
