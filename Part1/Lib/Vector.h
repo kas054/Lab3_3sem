@@ -27,30 +27,26 @@ namespace Prog3{
 
         Vector(int size, double *values)
         {
+            if (size > max_size) size = max_size;
             current_size = size;
             for (int i = 0; i < size; i ++) vector[i] = values[i];
         }
 
-        Vector(const Vector &source_vector)
-        {
-            current_size = source_vector.current_size;
-            for (int i = 0; i < current_size; i ++) vector[i] = source_vector.vector[i];
-
-        }
 
         int getMaxSize() const {return max_size;};
         int getCurSize () const {return current_size;}
-        double getNum(int i) const {return vector[i];}
+        double getNum(int i) const {return vector[i];} // вернуть i- ый элемент вектора чисел
+        bool getNumbers(const Vector &vector_2) const; // проверка равенства векторов чисел
+
         std::ostream & print(std::ostream&) const;
-        void inputParameters(int size = 0, double *values = nullptr, double value = 0);
-        void printVector() const;
-        double *addition(Vector summand);
-        double *subtraction(Vector deductible);
-        double scalarProduct(Vector multiplier) const;
+        void inputParameters(int size = 0, double *values = nullptr, double value = 0); // передали значение или размер вектора чесел + вектор
+
+        Vector *addition(const Vector &summand);
+        Vector *subtraction(const Vector &deductible);
+        double scalarProduct(const Vector &multiplier) const;
         double normOfVector() const;
         void addElement(double value);
-        Vector & operator = (const Vector &);
     };
 
 }
-#endif //LAB3_3SEM_VECTOR_H
+#endif //VECTOR_H
