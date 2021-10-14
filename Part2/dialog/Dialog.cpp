@@ -82,7 +82,8 @@ namespace Menu {
 
     int D_Add_Sub(Vector &vector)
     {
-        Vector vector_2, *answer;
+        Vector vector_2, answer;
+        answer = Vector();
         double *numbers = nullptr;
         int size = 0;
         std::cout << "Max size of vector: " << vector.getMaxSize() << std::endl;
@@ -104,20 +105,22 @@ namespace Menu {
         delete [] numbers;
 
         std::cout << "vector1 + vector2 =  " << std::endl;
-        answer =  vector.addition(vector_2);
-        D_Print(*answer);
-        delete answer;
-        *answer = vector + vector_2;
-        D_Print(*answer);
-        delete answer;
+        //answer =  vector.addition(vector_2);
+        //D_Print(*answer);
+        //delete answer;
+        answer = vector + vector_2;
+        D_Print(answer);
+        //delete answer;
 
         std::cout << "vector1 - vector2 =  " << std::endl;
-        answer =  vector.subtraction(vector_2);
+        answer = vector - vector_2;
+        D_Print(answer);
+        /*answer =  vector.subtraction(vector_2);
         D_Print(*answer);
         delete answer;
         *answer = vector - vector_2;
         D_Print(*answer);
-        delete answer;
+        delete answer; */
 
         return 1;
     }
@@ -171,6 +174,7 @@ namespace Menu {
         }
         vector_2.inputParameters(size, numbers);
         std::cout << vector.scalarProduct(vector_2) << std::endl;
+        std::cout << vector*vector_2 << std::endl;
         delete [] numbers;
         return 1;
     }
