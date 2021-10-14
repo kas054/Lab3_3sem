@@ -7,7 +7,7 @@
 namespace Prog3{
     void Vector::inputParameters(int size, double *values, double value)
     {
-        if (size == 0) // передали одно значение
+        if (size == 1) // передали одно значение
         {
             current_size = 1;
             vector[0] = value;
@@ -123,6 +123,40 @@ namespace Prog3{
         }
         return summa;
     }
+
+    Vector  Vector::operator + (double number){
+        Vector summa = *this;
+        (summa.vector)[0] += number;
+        return summa;
+    }
+    Vector operator + (double number, const Vector &summand){
+        Vector summa = summand;
+        (summa.vector)[0] += number;
+        return summa;
+    }
+/*
+    template <class V>  Vector Vector::operator + (const V & summand){
+        Vector summa;
+        if (sizeof(summand) == sizeof(double))
+        {
+            summa = *this;
+            (summa.vector)[0] += summand;
+        }
+        else {
+            current_size < summand.current_size ? summa.current_size = summand.current_size : summa.current_size = current_size;
+            if (current_size < summand.current_size)
+            {
+                for (int i = 0; i < current_size; i++) (summa.vector)[i] = vector[i] + summand.vector[i];
+                for ( int i = current_size; i < summand.current_size; i ++) (summa.vector)[i] = summand.vector[i];
+            }
+            else if (current_size >= summand.current_size)
+            {
+                for (int i = 0; i < summand.current_size; i++) (summa.vector)[i] = vector[i] + summand.vector[i];
+                for (int i =summand.current_size; i < current_size; i++) (summa.vector)[i] = vector[i];
+            }
+        }
+        return summa;
+    } */
 
     Vector  Vector::operator - (const Vector &deductible){
         Vector subtraction;
