@@ -108,43 +108,43 @@ namespace Prog3{
         return answer;
     }
 
-    Vector & Vector::operator + (const Vector &summand){
-        Vector *summa = new Vector;
-        current_size < summand.current_size ? summa->current_size = summand.current_size : summa->current_size = current_size;
+    Vector  Vector::operator + (const Vector &summand){
+        Vector summa;
+        current_size < summand.current_size ? summa.current_size = summand.current_size : summa.current_size = current_size;
         if (current_size < summand.current_size)
         {
-            for (int i = 0; i < current_size; i++) (summa->vector)[i] = vector[i] + summand.vector[i];
-            for ( int i = current_size; i < summand.current_size; i ++) (summa->vector)[i] = summand.vector[i];
+            for (int i = 0; i < current_size; i++) (summa.vector)[i] = vector[i] + summand.vector[i];
+            for ( int i = current_size; i < summand.current_size; i ++) (summa.vector)[i] = summand.vector[i];
         }
         else if (current_size >= summand.current_size)
         {
-            for (int i = 0; i < summand.current_size; i++) (summa->vector)[i] = vector[i] + summand.vector[i];
-            for (int i =summand.current_size; i < current_size; i++) (summa->vector)[i] = vector[i];
+            for (int i = 0; i < summand.current_size; i++) (summa.vector)[i] = vector[i] + summand.vector[i];
+            for (int i =summand.current_size; i < current_size; i++) (summa.vector)[i] = vector[i];
         }
-        return *summa;
+        return summa;
     }
 
-    Vector & Vector::operator - (const Vector &deductible){
-        Vector *subtraction = new Vector;
-        current_size < deductible.current_size ? subtraction->current_size = deductible.current_size : subtraction->current_size = current_size;
+    Vector  Vector::operator - (const Vector &deductible){
+        Vector subtraction;
+        current_size < deductible.current_size ? subtraction.current_size = deductible.current_size : subtraction.current_size = current_size;
 
         if (current_size < deductible.current_size)
         {
-            for (int i = 0; i < current_size; i++) (subtraction->vector)[i] = vector[i] - deductible.vector[i];
-            for ( int i = current_size; i < deductible.current_size; i ++) (subtraction->vector)[i] = -1 * deductible.vector[i];
+            for (int i = 0; i < current_size; i++) (subtraction.vector)[i] = vector[i] - deductible.vector[i];
+            for ( int i = current_size; i < deductible.current_size; i ++) (subtraction.vector)[i] = -1 * deductible.vector[i];
         }
 
         else if (current_size >= deductible.current_size)
         {
             for (int i = 0; i < deductible.current_size; i++)
-                (subtraction->vector)[i] = vector[i] - deductible.vector[i];
+                (subtraction.vector)[i] = vector[i] - deductible.vector[i];
             for ( int i = deductible.current_size; i < current_size; i ++)
-                (subtraction->vector)[i] = vector[i];
+                (subtraction.vector)[i] = vector[i];
         }
 
-        while ((subtraction->vector)[subtraction->current_size - 1] == 0 && subtraction->current_size > 0) subtraction->current_size -= 1;
+        while ((subtraction.vector)[subtraction.current_size - 1] == 0 && subtraction.current_size > 0) subtraction.current_size -= 1;
 
-        return *subtraction;
+        return subtraction;
     }
 
     double Vector::operator *(const Vector & multiplier){
