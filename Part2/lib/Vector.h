@@ -47,11 +47,14 @@ namespace Prog3{
         double normOfVector() const;
         void addElement(double value);
 
-        Vector  operator +(const Vector &); //сложение векторов
+        Vector  operator +(const Vector & ); //сложение векторов
+        Vector operator + (double number);
         Vector  operator -(const Vector &); // вычитание векторов
         double operator *(const Vector &); //скалярное произведение
         Vector & operator = (const Vector &);
+        friend Vector operator + (double, const Vector & );
+        //template <class V>  Vector operator + (const V & );
     };
-
+    Vector operator + (double, const Vector &);
 }
 #endif //LAB3_3SEM_VECTOR_H
