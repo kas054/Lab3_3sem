@@ -47,8 +47,8 @@ namespace Prog3{
         double normOfVector() const;
         void addElement(double value);
 
-        Vector & operator +(const Vector &); //сложение векторов
-        Vector & operator -(const Vector &); // вычитание векторов
+        Vector  operator +(const Vector &); //сложение векторов
+        Vector  operator -(const Vector &); // вычитание векторов
         double operator *(const Vector &); //скалярное произведение
         Vector & operator = (const Vector &);
     };
