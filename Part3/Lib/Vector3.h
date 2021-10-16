@@ -30,6 +30,18 @@ namespace Prog3
         Vector3 &operator =(Vector3 &&);
         ~Vector3() { delete[] vector; }; // деструктор
 
+        Vector3 operator + (const Vector3 &); //сложение векторов
+        Vector3 operator + (double number);
+        friend Vector3 operator + (double, const Vector3 & );
+
+        Vector3  operator - (const Vector3 &); // вычитание векторов
+        Vector3 operator - (double number);
+        friend Vector3 operator - (double, const Vector3 & );
+
+        double operator *(const Vector3 &); //скалярное произведение
+        double operator *(double number);
+        friend Vector3 operator * (double number, const Vector3 &vector);
+
         int getMaxSize() const {return max_size;};
         int getCurSize () const {return current_size;}
         double getNum(int i) const {return vector[i];}
@@ -37,13 +49,18 @@ namespace Prog3
 
         std::ostream & print(std::ostream&) const;
         void inputParameters(int size = 0, double *values = nullptr, double value = 0);
+        friend std::ostream & operator << (std::ostream &, const Vector3 &);
+        friend std::istream & operator >> (std::istream &, Vector3 &);
 
-        Vector3 *addition(const Vector3 &summand);
-        Vector3 *subtraction(const Vector3 &deductible);
+        Vector3 addition(const Vector3 &summand);
+        Vector3 subtraction(const Vector3 &deductible);
         double scalarProduct(const Vector3 &multiplier) const;
         double normOfVector() const;
         void addElement(double value);
 
     };
+    Vector3 operator + (double, const Vector3 &);
+    Vector3 operator - (double, const Vector3 &);
+    Vector3 operator * (double number, const Vector3 &vector) {return number * (vector.vector)[0];};
 }
 #endif //VECTOR3_H
