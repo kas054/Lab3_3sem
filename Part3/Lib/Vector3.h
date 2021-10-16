@@ -61,6 +61,6 @@ namespace Prog3
     };
     Vector3 operator + (double, const Vector3 &);
     Vector3 operator - (double, const Vector3 &);
-    Vector3 operator * (double number, const Vector3 &vector) {return number * (vector.vector)[0];};
+    Vector3 operator * (double number, const Vector3 &vector);
 }
 #endif //VECTOR3_H
