@@ -246,6 +246,10 @@ namespace Prog3 {
         return summa;
     }
 
+    Vector3 operator * (double number, const Vector3 &vector) {
+        return number * (vector.vector)[0];
+    }
+
     std::ostream & operator << (std::ostream &s, const Vector3 &vec)
     {
         if (vec.current_size == 0)
@@ -260,15 +264,13 @@ namespace Prog3 {
     std::istream & operator >> (std::istream &in, Vector3 &vector)
     {
         double number;
+        int size;
         std::cout << "Enter count of numbers in vector: " << std::endl;
-        in >> vector.current_size;
-        for (int i = 0; i < vector.current_size; i ++){
+        in >> size;
+        for (int i = 0; i < size; i ++){
             in >> number;
             vector.addElement(number);
         }
         return in;
     }
 }
-
-
-
