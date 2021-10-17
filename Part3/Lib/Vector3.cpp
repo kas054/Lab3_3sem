@@ -228,7 +228,7 @@ Vector3  Vector3::operator - (double number){
 double  Vector3::operator * (double number){
     double answer;
     Vector3 vector = *this;
-    answer = (vector.vector)[0];
+    answer = (vector.vector)[0] * number;
     return answer;
 }
 
