@@ -41,20 +41,27 @@ namespace Prog3{
         std::ostream & print(std::ostream&) const;
         void inputParameters(int size = 0, double *values = nullptr, double value = 0); // передали значение или размер вектора чесел + вектор
 
-        Vector *addition(const Vector &summand);
-        Vector *subtraction(const Vector &deductible);
+        Vector addition(const Vector &summand);
+        Vector subtraction(const Vector &deductible);
         double scalarProduct(const Vector &multiplier) const;
         double normOfVector() const;
         void addElement(double value);
 
-        Vector  operator +(const Vector & ); //сложение векторов
+        Vector operator + (const Vector &); //сложение векторов
         Vector operator + (double number);
-        Vector  operator -(const Vector &); // вычитание векторов
-        double operator *(const Vector &); //скалярное произведение
-        Vector & operator = (const Vector &);
         friend Vector operator + (double, const Vector & );
-        //template <class V>  Vector operator + (const V & );
+
+        Vector  operator - (const Vector &); // вычитание векторов
+        Vector operator - (double number);
+        friend Vector operator - (double, const Vector & );
+
+        double operator *(const Vector &); //скалярное произведение
+        double operator *(double number);
+        friend double operator * (double number, const Vector &vector);
+
+        friend std::ostream & operator << (std::ostream &, const Vector &);
+        friend std::istream & operator >> (std::istream &, Vector &);
     };
-    Vector operator + (double, const Vector &);
+
 }
 #endif //LAB3_3SEM_VECTOR_H
