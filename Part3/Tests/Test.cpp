@@ -31,6 +31,8 @@ TEST(methods, add_sub)
     ASSERT_EQ(-3, (b - a).getNum(0));
     ASSERT_EQ(4, (a - 0).getNum(0));
     ASSERT_EQ(66, (67 - b).getNum(0));
+    ASSERT_EQ(14, (10 + a).getNum(0));
+    ASSERT_EQ(65, (b + 64).getNum(0));
 }
 TEST(methods, scalar)
 {
