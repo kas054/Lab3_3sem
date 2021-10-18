@@ -26,20 +26,21 @@ TEST(methods, add_sub)
     double numbers[10] = {1};
     Vector3 a(4);
     Vector3 b(10, numbers);
-    Vector3 c = a + b;
-    Vector3 d = a - b;
-    ASSERT_EQ(5, (b.addition(a)).getNum(0));
+    ASSERT_EQ(5, (a+b).getNum(0));
     ASSERT_EQ(-3, (b.subtraction(a)).getNum(0));
-    ASSERT_EQ(3, d.getNum(0));
-    ASSERT_EQ(5, c.getNum(0));
+    ASSERT_EQ(-3, (b - a).getNum(0));
+    ASSERT_EQ(4, (a - 0).getNum(0));
+    ASSERT_EQ(66, (67 - b).getNum(0));
 }
 TEST(methods, scalar)
 {
     double numbers[10] = {1};
     Vector3 a(4);
     Vector3 b(10, numbers);
+    ASSERT_EQ(4, b.scalarProduct(a));
     ASSERT_EQ(4, b * a);
-    ASSERT_EQ(12, a * 3);
+    ASSERT_EQ(28, a * 7);
+    ASSERT_EQ(90, 90 * b);
 }
 TEST(methods, normOfVector)
 {
