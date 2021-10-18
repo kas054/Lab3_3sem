@@ -145,7 +145,9 @@ namespace Prog3{
     Vector operator - (double number, const Vector &summand) {
         Vector summa = summand;
         (summa.vector)[0] -= number;
-        (summa.vector)[0] *= (-1);
+        for (int i = 0; i < summand.current_size; i ++){
+            (summa.vector)[i] *= (-1);
+        }
         return summa;
     }
 
